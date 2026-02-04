@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* ============================= */
+/* Root Variables & Theme Colors */
+/* ============================= */
+@theme {
+  --color-brand-orange: #ff5e00;
+  --color-brand-dark: #141414;
+  /* Defining the typography scale as variables */
+  --font-mluvka: 'Mluvka', Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --background: #141414;
+  --foreground: #ffffff;
+}
+
+/* ============================= */
+/* Body & Global Styles */
+/* ============================= */
+body {
+  background-color: var(--color-brand-dark);
+  color: var(--foreground);
+  font-family: var(--font-mluvka);
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* ============================= */
+/* Typography */
+/* ============================= */
+/* h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: #ffffff;  */
+  /* Explicitly white for H-tags */
+/* } */
+
+/* Using Tailwind 4.0 @utility for custom classes */
+/* @utility text-h1 { @apply text-6xl md:text-8xl; } */
+/* @utility text-h2 { @apply text-5xl md:text-7xl; } */
+
+/* h1 { @apply text-h1; } */
+/* h2 { @apply text-h2; } */
+/* ... and so on for h3-h6 ... */
+
+p {
+  /* font-size: 16px; */
+  /* line-height: 1.8em; */
+   /* Matching your Style Guide */
+  /* font-weight: 400; */
+  /* color: #a1a1a1;  */
+  /* margin-bottom: 1rem; */
+}
