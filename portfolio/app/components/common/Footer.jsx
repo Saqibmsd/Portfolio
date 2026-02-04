@@ -17,9 +17,9 @@ const Footer = () => {
               I'm a product designer focused on building clean, intuitive interfaces that solve real-world problems.
             </p>
           </div>
-          {/* <p className="text-gray-600 text-xs pt-4">
+          <p className="text-gray-600 text-xs pt-4">
             © Copyright Portfolio | Design by M.Saqib | Intern in Safecare
-          </p> */}
+          </p>
         </div>
 
         {/* Column 2: Menu */}
