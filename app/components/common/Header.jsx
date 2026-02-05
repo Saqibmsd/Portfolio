@@ -52,8 +52,12 @@ const HeaderButton = () => {
           transition={{ duration: 0.4 }}
           className="flex flex-col"
         >
-          <span className="font-bold text-sm leading-[20px] text-black block">Get in touch</span>
-          <span className="font-bold text-sm leading-[20px] text-white block">Get in touch</span>
+          <span className="font-bold text-sm leading-[20px] text-black block">
+            Get in touch
+          </span>
+          <span className="font-bold text-sm leading-[20px] text-white block">
+            Get in touch
+          </span>
         </motion.div>
       </div>
     </motion.button>
@@ -91,7 +95,9 @@ const Header = () => {
   ];
 
   return (
-    <header className={`w-full ${isScrolled ? "fixed bg-black/95 backdrop-blur-sm shadow-md" : "absolute bg-transparent"} top-0 z-50 overflow-visible transition-all duration-300`}>
+    <header
+      className={`w-full ${isScrolled ? "fixed bg-black/60 backdrop-blur-sm shadow-md" : "absolute bg-transparent"} top-0 z-50 overflow-visible transition-all duration-300`}
+    >
       {/* MODIFIED: Increased px-2 to px-6 and max-width for consistency */}
       <div className="max-w-[1550px] mx-auto flex items-center justify-between h-20 px-6">
         <div className="flex items-center">
@@ -99,7 +105,14 @@ const Header = () => {
             href="/"
             className="text-xl md:text-2xl font-black tracking-tighter text-white uppercase"
           >
-            Portfolio<span className="text-[10px] md:text-xs align-top">®</span>
+            Portfolio
+            <span
+              className={`align-top text-[10px] md:text-xs transition-colors duration-300 ${
+                isScrolled ? "text-[#FF5F00]" : "text-white"
+              }`}
+            >
+              ®
+            </span>
           </Link>
         </div>
 
@@ -109,7 +122,9 @@ const Header = () => {
               key={link.name}
               href={link.href}
               className={`text-sm font-bold transition-colors ${
-                pathname === link.href ? "text-white" : "text-white/80 hover:text-white"
+                pathname === link.href
+                  ? "text-white"
+                  : "text-white/80 hover:text-white"
               }`}
             >
               {link.name}
@@ -134,7 +149,7 @@ const Header = () => {
       {/* MODIFIED: Wrapped in AnimatePresence for smooth entry/exit */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
@@ -142,7 +157,9 @@ const Header = () => {
             className="fixed inset-0 z-[60] md:hidden bg-black flex flex-col p-8"
           >
             <div className="flex justify-between items-center mb-12">
-              <span className="text-white font-black tracking-tighter text-xl">PORTFOLIO</span>
+              <span className="text-white font-black tracking-tighter text-xl">
+                PORTFOLIO
+              </span>
               <button onClick={() => setIsMenuOpen(false)}>
                 <X size={32} className="text-white" />
               </button>
@@ -154,7 +171,9 @@ const Header = () => {
                   key={link.name}
                   href={link.href}
                   className={`text-4xl font-black uppercase tracking-tighter transition-colors ${
-                    pathname === link.href ? "text-[#FF5F00]" : "text-white hover:text-[#FF5F00]"
+                    pathname === link.href
+                      ? "text-[#FF5F00]"
+                      : "text-white hover:text-[#FF5F00]"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
