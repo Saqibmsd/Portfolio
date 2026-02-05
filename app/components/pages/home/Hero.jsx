@@ -29,8 +29,7 @@ const Hero = () => {
     const duplicatedBrands = [...brandList, ...brandList];
 
     return (
-      <div className="w-full overflow-hidden max-w-[1550px] mx-auto bg-[#0a0a0a]">
-        {/* MODIFIED: Adjusted border radius for mobile (rounded-b-[40px]) vs desktop */}
+      <div className="w-full overflow-hidden flex flex-col min-h-screen mx-auto bg-[#0a0a0a]">
         <div className="relative bg-[#141414] w-full py-8 md:py-16 overflow-hidden rounded-b-[40px] md:rounded-b-[80px]">
           <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 z-20 pointer-events-none bg-gradient-to-r from-[#141414] to-transparent" />
           <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 z-20 pointer-events-none bg-gradient-to-l from-[#141414] to-transparent" />
