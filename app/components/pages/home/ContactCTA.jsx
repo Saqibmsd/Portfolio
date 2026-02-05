@@ -7,7 +7,7 @@ const ContactCTA = () => {
       {/* Background Image Container */}
       <div className="absolute inset-0 w-full h-full">
         <img 
-          src="https://cdn.prod.website-files.com/68b3d5ef92d2b3414ccebad2/68bd341e34845d434f3fb083_1.avif" 
+          src="https://cdn.prod.website-files.com/68b29a3a3c940a53d3f1b4e0/68b3b782c3319daa27b71702_1.webp" 
           alt="Start Your Brand"
           className="w-full h-full object-cover"
         />

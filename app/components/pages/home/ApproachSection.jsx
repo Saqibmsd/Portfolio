@@ -6,7 +6,7 @@ const ApproachSection = () => {
     {
       title: "Strategy First",
       description: "Every design decision is rooted in a clear brand strategy. No guesswork.",
-      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800",
+      image: "https://cdn.prod.website-files.com/68b29a3a3c940a53d3f1b4e0/68bd3840319fe6b1e02aa14a_1.avif",
       size: "lg:col-span-8",
       bg: "bg-zinc-900"
     },
@@ -25,7 +25,7 @@ const ApproachSection = () => {
     {
       title: "Consistency Across Touchpoints",
       description: "From logo to social templates, I help you stay on-brand everywhere.",
-      image: "https://cdn.prod.website-files.com/68b3d5ef92d2b3414ccebad2/68bd341e34845d434f3fb083_1.avif",
+      image: "https://cdn.prod.website-files.com/68b29a3a3c940a53d3f1b4e0/68b328d0ca27902565def169_3.webp",
       size: "lg:col-span-8",
       bg: "bg-zinc-900"
     }
