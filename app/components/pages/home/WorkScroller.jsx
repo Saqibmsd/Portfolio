@@ -12,13 +12,13 @@ const WorkScroller = () => {
   ];
 
   return (
-    <section className="bg-[#0a0a0a] py-24 relative w-full h-[700px] md:h-[900px] overflow-hidden -mt-32 pt-55 z-20 rounded-b-[80px]">
+    <section className="bg-[#0a0a0a] py-24 relative w-full h-[700px] md:h-[900px] overflow-hidden -mt-32 pt-55 z-20 rounded-b-[40px] md:rounded-b-[80px]">
       {/* Title Area */}
       <div className="text-center mb-16">
         <p className="text-[#ff5c00] font-bold uppercase tracking-widest text-sm mb-4">
           Behind the Designs
         </p>
-        <h2 className="text-white text-4xl md:text-6xl font-bold tracking-tight">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight">
           Explore More of My Work
         </h2>
       </div>
@@ -41,7 +41,7 @@ const WorkScroller = () => {
               key={index} 
               className="flex-shrink-0 w-[250px] md:w-[350px] px-3"
             >
-              <div className="rounded-[2.5rem] overflow-hidden aspect-[3/4] border-2 border-[#ff5c00]/20 hover:border-[#ff5c00] transition-colors duration-500">
+              <div className="rounded-[2.5rem] overflow-hidden w-full max-w-sm aspect-[3/4] border-2 border-[#ff5c00]/20 hover:border-[#ff5c00] transition-colors duration-500">
                 <img 
                   src={src} 
                   alt={`Work ${index}`} 

@@ -23,21 +23,24 @@ const DesignSection = () => {
   ];
 
   return (
-    <section className="bg-[#0a0a0a] text-white py-20">
+    /* MODIFIED: Standardized padding for mobile vs desktop */
+    <section className="bg-[#0a0a0a] text-white px-6 py-12 md:py-20">
       {/* --- Top Header --- */}
-      <div className="max-w-[1450px] mx-auto flex flex-col md:flex-row justify-between items-start gap-10 mb-16">
+      <div className="max-w-[1450px] mx-auto flex flex-col md:flex-row justify-between items-start gap-6 md:gap-10 mb-12 md:mb-16">
         <div className="md:w-3/5">
-          <p className="text-[#ff5c00] font-bold uppercase tracking-widest text-sm mb-4">
+          <p className="text-[#ff5c00] font-bold uppercase tracking-widest text-xs md:text-sm mb-4">
             Behind the Designs
           </p>
-          <h2 className="text-4xl md:text-6xl font-bold leading-[1.1] tracking-tight">
+          {/* MODIFIED: Adjusted heading size for mobile (text-3xl) */}
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-[1.2] md:leading-[1.1] tracking-tight">
             Shaping Experiences That <br className="hidden md:block" /> Make
             Life Simpler
           </h2>
         </div>
 
         <div className="md:w-1/3 flex flex-col items-start">
-          <p className="text-gray-400 text-lg leading-relaxed mb-8">
+          {/* MODIFIED: Adjusted text size and leading for mobile */}
+          <p className="text-gray-400 text-base md:text-lg lg:text-1xl xl:text-2xl leading-relaxed mb-6 md:mb-8">
             I'm a product designer focused on building clean, intuitive
             interfaces that solve real-world problems.
           </p>
@@ -46,7 +49,8 @@ const DesignSection = () => {
       </div>
 
       {/* --- Image Grid --- */}
-      <div className="max-w-[1450px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+      {/* MODIFIED: Adjusted gap and margin for mobile flow */}
+      <div className="max-w-[1450px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
         {projects.map((project) => (
           <motion.div
             key={project.id}
@@ -60,27 +64,6 @@ const DesignSection = () => {
             />
           </motion.div>
         ))}
-      </div>
-
-      {/* --- Bottom Header --- */}
-      <div className="max-w-[1450px] mx-auto flex flex-col md:flex-row justify-between items-start gap-10 border-t border-zinc-800 pt-16">
-        <div className="md:w-3/5">
-          <p className="text-[#ff5c00] font-bold uppercase tracking-widest text-sm mb-4">
-            Featured Projects
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
-            Designing Bold Brands <br className="hidden md:block" /> That Leave
-            a Lasting Impression
-          </h2>
-        </div>
-
-        <div className="md:w-1/3">
-          <p className="text-gray-400 text-lg leading-relaxed">
-            With a passion for clarity, aesthetics, and emotion-driven design, I
-            partner with founders and teams to create visual identities that
-            truly connect.
-          </p>
-        </div>
       </div>
     </section>
   );

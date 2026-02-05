@@ -9,7 +9,8 @@ const CoreValues = () => {
   ];
 
   return (
-    <section className="h-screen relative w-full h-[700px] md:h-[900px] overflow-hidden -mt-32 pt-55 z-10">
+    /* MODIFIED: Used min-h to prevent content overflow on mobile and corrected pt/mt */
+    <section className="relative w-full min-h-[800px] md:h-[900px] overflow-hidden -mt-24 md:-mt-32 pt-32 md:pt-40 z-10">
       {/* 1. Full-Width Background Image */}
       <div className="absolute inset-0">
         <img 
@@ -17,21 +18,24 @@ const CoreValues = () => {
           alt="My Core Values"
           className="w-full h-full object-cover"
         />
-        {/* Subtle dark gradient overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        {/* MODIFIED: Increased gradient strength for better mobile readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
       </div>
 
-      {/* 2. Content Centered at Bottom */}
-      <div className="relative z-10 h-full flex flex-col justify-end items-center pb-12 px-6">
+      {/* 2. Content Container */}
+      {/* MODIFIED: pb-20 for extra room on mobile */}
+      <div className="relative z-10 h-full flex flex-col justify-end items-center pb-12 md:pb-20 px-6">
         
         {/* Header Text */}
-        <div className="max-w-[1450px] w-full flex flex-col md:flex-row justify-between items-end mb-12 border-b border-white/20 pb-8">
+        {/* MODIFIED: items-start for mobile, items-end for desktop */}
+        <div className="max-w-[1450px] w-full flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 border-b border-white/20 pb-8">
           <div className="text-left">
             <p className="text-[#ff5c00] font-bold uppercase tracking-widest text-xs mb-2">Values</p>
-            <h2 className="text-white text-4xl md:text-5xl font-bold tracking-tight">My Core Values</h2>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight">My Core Values</h2>
           </div>
-          <div className="max-w-md mt-4 md:mt-0">
-            <p className="text-gray-300 text-sm md:text-base text-left md:text-right leading-relaxed">
+          <div className="max-w-md mt-6 md:mt-0">
+            {/* MODIFIED: Aligned text left for consistency on mobile */}
+            <p className="text-gray-300 text-base md:text-md lg:text-1xl xl:text-2xl leading-relaxed">
               My mission, vision, and values are at the core of every project—guiding how I think, create, and collaborate to build brands that matter.
             </p>
           </div>
@@ -40,9 +44,17 @@ const CoreValues = () => {
         {/* Values Grid */}
         <div className="max-w-[1450px] w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {values.map((v, i) => (
-            <div key={i} className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-colors">
-              <h3 className="text-white font-bold text-sm mb-2 uppercase tracking-wider">{v.title}</h3>
-              <p className="text-gray-400 text-xs leading-relaxed">{v.desc}</p>
+            <div 
+              key={i} 
+              className="bg-white/5 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-2xl hover:bg-white/10 transition-colors group"
+            >
+              {/* MODIFIED: Added a small hover accent to the cards */}
+              <h3 className="text-[#ff5c00] lg:text-white group-hover:text-[#ff5c00] font-bold text-xs mb-3 uppercase tracking-wider transition-colors">
+                {v.title}
+              </h3>
+              <p className="text-gray-300 md:text-gray-400 text-sm leading-relaxed">
+                {v.desc}
+              </p>
             </div>
           ))}
         </div>

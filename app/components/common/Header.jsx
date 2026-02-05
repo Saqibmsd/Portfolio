@@ -1,6 +1,6 @@
- "use client";
+"use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion"; // ADDED: AnimatePresence
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -17,16 +17,8 @@ const HeaderButton = () => {
     >
       <motion.div
         variants={{
-          initial: {
-            x: "10%",
-            width: "30px",
-            opacity: 0,
-          },
-          hover: {
-            x: 0,
-            width: "calc(100% - 8px)",
-            opacity: 1,
-          },
+          initial: { x: "10%", width: "30px", opacity: 0 },
+          hover: { x: 0, width: "calc(100% - 8px)", opacity: 1 },
         }}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         className="absolute left-1 h-[calc(100%-8px)] rounded-full bg-[#FF5F00] z-0"
@@ -60,12 +52,8 @@ const HeaderButton = () => {
           transition={{ duration: 0.4 }}
           className="flex flex-col"
         >
-          <span className="font-bold text-sm leading-[20px] text-black block">
-            Get in touch
-          </span>
-          <span className="font-bold text-sm leading-[20px] text-white block">
-            Get in touch
-          </span>
+          <span className="font-bold text-sm leading-[20px] text-black block">Get in touch</span>
+          <span className="font-bold text-sm leading-[20px] text-white block">Get in touch</span>
         </motion.div>
       </div>
     </motion.button>
@@ -76,7 +64,6 @@ const HeaderButton = () => {
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-
   const { newItemsCount } = useCart();
   const pathname = usePathname();
 
@@ -104,14 +91,15 @@ const Header = () => {
   ];
 
   return (
-    <header className={`w-full ${isScrolled ? "fixed bg-black/95 backdrop-blur-sm shadow-md" : "absolute bg-transparent"} top-0 z-50 overflow-visible transition-colors duration-300`}>
-      <div className="mx-auto flex items-center justify-between h-20 px-2">
+    <header className={`w-full ${isScrolled ? "fixed bg-black/95 backdrop-blur-sm shadow-md" : "absolute bg-transparent"} top-0 z-50 overflow-visible transition-all duration-300`}>
+      {/* MODIFIED: Increased px-2 to px-6 and max-width for consistency */}
+      <div className="max-w-[1550px] mx-auto flex items-center justify-between h-20 px-6">
         <div className="flex items-center">
           <Link
             href="/"
-            className="text-2xl font-black tracking-tighter text-white uppercase"
+            className="text-xl md:text-2xl font-black tracking-tighter text-white uppercase"
           >
-            Portfolio<span className="text-xs align-top">®</span>
+            Portfolio<span className="text-[10px] md:text-xs align-top">®</span>
           </Link>
         </div>
 
@@ -121,9 +109,7 @@ const Header = () => {
               key={link.name}
               href={link.href}
               className={`text-sm font-bold transition-colors ${
-                pathname === link.href
-                  ? "text-white"
-                  : "text-white/80 hover:text-white"
+                pathname === link.href ? "text-white" : "text-white/80 hover:text-white"
               }`}
             >
               {link.name}
@@ -137,7 +123,7 @@ const Header = () => {
           </div>
 
           <button
-            className="md:hidden text-white"
+            className="md:hidden text-white p-2" // MODIFIED: Added p-2 for easier clicking
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -145,35 +131,47 @@ const Header = () => {
         </div>
       </div>
 
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden bg-black flex flex-col p-8">
-          <div className="flex justify-between items-center mb-12">
-            <span className="text-white font-black">PORTFOLIO</span>
-            <X
-              size={32}
-              className="text-white"
-              onClick={() => setIsMenuOpen(false)}
-            />
-          </div>
+      {/* MODIFIED: Wrapped in AnimatePresence for smooth entry/exit */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "tween", duration: 0.3 }}
+            className="fixed inset-0 z-[60] md:hidden bg-black flex flex-col p-8"
+          >
+            <div className="flex justify-between items-center mb-12">
+              <span className="text-white font-black tracking-tighter text-xl">PORTFOLIO</span>
+              <button onClick={() => setIsMenuOpen(false)}>
+                <X size={32} className="text-white" />
+              </button>
+            </div>
 
-          <nav className="flex flex-col gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="font-bold text-white hover:text-[#FF5F00]"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
+            <nav className="flex flex-col gap-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`text-4xl font-black uppercase tracking-tighter transition-colors ${
+                    pathname === link.href ? "text-[#FF5F00]" : "text-white hover:text-[#FF5F00]"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
 
-          <div className="mt-auto">
-            <HeaderButton />
-          </div>
-        </div>
-      )}
+            <div className="mt-auto pt-10">
+              {/* MODIFIED: Ensuring the button stretches nicely on mobile */}
+              <div className="w-fit scale-125 origin-left">
+                <HeaderButton />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

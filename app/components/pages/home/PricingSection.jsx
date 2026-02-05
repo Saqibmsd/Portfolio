@@ -19,7 +19,7 @@ const PricingSection = () => {
     {
       name: "Pro Plan",
       price: "$2990",
-      tagline: "Ideal for businesses ready to scale.",
+      tagline: "Ideal for businesses.",
       features: [
         "Full brand identity design",
         "UI/UX design for website or app",
@@ -43,33 +43,42 @@ const PricingSection = () => {
   ];
 
   return (
-    <section className="bg-[#0a0a0a] text-white py-24 rounded-b-[80px] relative z-30 w-full">
+    /* CHANGE: Added responsive padding (py-16 md:py-24) and responsive rounding (rounded-b-[40px] md:rounded-b-[80px]) */
+    /* CHANGE: Added px-6 to prevent cards from touching screen edges on mobile */
+    <section className="bg-[#0a0a0a] text-white py-16 md:py-24 rounded-b-[40px] md:rounded-b-[80px] relative z-30 w-full px-6">
       {/* Header */}
-      <div className="text-center mb-16">
-        <p className="text-[#ff5c00] font-bold uppercase tracking-widest text-xs mb-4">
+      {/* CHANGE: Added mb-12 md:mb-16 for tighter mobile spacing */}
+      <div className="text-center mb-12 md:mb-16">
+        <p className="text-[#ff5c00] font-bold uppercase tracking-widest text-sm mb-4">
           Pricing
         </p>
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
+        {/* CHANGE: Scaled heading (text-3xl md:text-6xl) */}
+        <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight">
           Simple Packages for Every Stage
         </h2>
       </div>
 
       {/* Pricing Grid */}
-      <div className="max-w-[1450px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* CHANGE: Ensured gap-6 on mobile and gap-8 on desktop */}
+      <div className="max-w-[1450px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-2 lg:gap-8">
         {plans.map((plan, index) => (
           <div
             key={index}
-            className={`rounded-[2.5rem] p-10 flex flex-col transition-all duration-500 ${
+            /* CHANGE: Responsive rounding (rounded-[2rem] md:rounded-[2.5rem]) and padding (p-8 md:p-10) */
+            className={`rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-6 lg:p-10 flex flex-col transition-all duration-500 ${
               plan.isPopular
-                ? "bg-[#ff5c00] text-white  shadow-2xl shadow-orange-600/20"
+                ? "bg-[#ff5c00] text-white shadow-2xl shadow-orange-600/20"
                 : "bg-[#141414] text-white hover:bg-[#181818]"
             }`}
           >
             {/* Plan Info */}
-            <div className="mb-8">
-              <h3 className="font-semibold text-lg mb-4">{plan.name}</h3>
+            <div className="mb-4 lg:mb-8">
+              <h3 className="font-semibold text-lg mb-4 md:mb-2 lg:mb-4">{plan.name}</h3>
               <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-5xl font-bold">{plan.price}</span>
+                {/* CHANGE: Scaled price text slightly for mobile (text-4xl md:text-5xl) */}
+                <span className="text-4xl md:text-1xl lg:text-5xl font-bold">
+                  {plan.price}
+                </span>
                 <span
                   className={
                     plan.isPopular ? "text-orange-100" : "text-gray-500"
@@ -85,16 +94,18 @@ const PricingSection = () => {
               </p>
             </div>
 
+            {/* CHANGE: Added h-[1px] to make the divider visible */}
             <div
-              className={`w-full mb-8 ${plan.isPopular ? "bg-white/20" : "bg-zinc-800"}`}
+              className={`w-full h-[1px] mb-8 md:mb-4 lg:mb-6 ${plan.isPopular ? "bg-white/20" : "bg-zinc-800"}`}
             ></div>
 
             {/* Features List */}
-            <ul className="space-y-4 mb-12 flex-grow">
+            {/* CHANGE: Reduced bottom margin on mobile (mb-8 md:mb-12) */}
+            <ul className="space-y-4 md:space-y-1 lg:space-y-4 mb-8 md:mb-2 lg:mb-12 flex-grow">
               {plan.features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm">
+                <li key={i} className="flex items-center gap-3 md:gap-1 lg;gap text-sm">
                   <div
-                    className={`rounded-full p-1 ${plan.isPopular ? "bg-white text-orange-600" : "bg-orange-600 text-white"}`}
+                    className={`rounded-full p-1 shrink-0 ${plan.isPopular ? "bg-white text-orange-600" : "bg-orange-600 text-white"}`}
                   >
                     <svg
                       className="w-3 h-3"
@@ -116,7 +127,7 @@ const PricingSection = () => {
             </ul>
 
             {/* CTA Button */}
-            <Button href="/projects/nova-scene" text="Get Strted" />
+            <Button href="/projects/nova-scene" text="Get Started" />
           </div>
         ))}
       </div>
