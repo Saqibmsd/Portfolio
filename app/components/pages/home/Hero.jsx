@@ -1,13 +1,21 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-const phrases = ["Digital Creater", "Creative Agency"];
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 
 const Hero = () => {
   const [index, setIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
+
+  // --- Scroll Animation Logic ---
+  const { scrollY } = useScroll();
+  
+  // useSpring makes the zoom feel "buttery" smooth instead of rigid
+  const smoothScrollY = useSpring(scrollY, { stiffness: 200, damping: 50 });
+  
+  // Maps scroll from 0 to 800px to a scale of 1 to 1.1 (10% zoom)
+  const scale = useTransform(smoothScrollY, [0, 300], [1, 1.2]);
+  // ------------------------------
 
   useEffect(() => {
     setMounted(true);
@@ -17,6 +25,8 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const phrases = ["Digital Creator", "Creative Agency"];
+
   const Brands = () => {
     const brandList = [
       { name: "VERSACE", className: "font-serif tracking-widest" },
@@ -25,7 +35,6 @@ const Hero = () => {
       { name: "PRADA", className: "font-serif font-black" },
       { name: "CALVIN KLEIN", className: "font-sans font-bold" },
     ];
-
     const duplicatedBrands = [...brandList, ...brandList];
 
     return (
@@ -33,7 +42,6 @@ const Hero = () => {
         <div className="relative bg-[#141414] w-full py-8 md:py-16 overflow-hidden rounded-b-[40px] md:rounded-b-[80px]">
           <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 z-20 pointer-events-none bg-gradient-to-r from-[#141414] to-transparent" />
           <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 z-20 pointer-events-none bg-gradient-to-l from-[#141414] to-transparent" />
-
           <div className="flex">
             <motion.div
               className="flex items-center no-scrollbar"
@@ -41,13 +49,8 @@ const Hero = () => {
               transition={{ duration: 30, ease: "linear", repeat: Infinity }}
             >
               {duplicatedBrands.map((brand, i) => (
-                <div
-                  key={i}
-                  className="flex-shrink-0 select-none pr-10 md:pr-20 lg:pr-28"
-                >
-                  <h2
-                    className={`text-white text-xl md:text-3xl lg:text-[44px] ${brand.className}`}
-                  >
+                <div key={i} className="flex-shrink-0 select-none pr-10 md:pr-20 lg:pr-28">
+                  <h2 className={`text-white text-xl md:text-3xl lg:text-[44px] ${brand.className}`}>
                     {brand.name}
                   </h2>
                 </div>
@@ -65,21 +68,21 @@ const Hero = () => {
     <div className="w-full overflow-hidden flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative w-full min-h-screen flex flex-col justify-end overflow-hidden rounded-b-[40px] md:rounded-b-[80px]">
-        {/* Background Image */}
+        
+        {/* BACKGROUND IMAGE WITH ZOOM EFFECT */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <img
+          <motion.img
             src="https://cdn.prod.website-files.com/68b29a3a3c940a53d3f1b4e0/68b2e420fd3c36b68970d33c_1.avif"
             alt="Hero Background"
             className="w-full h-full object-cover opacity-60"
+            style={{ scale }} // Applying the zoom here
           />
         </div>
 
-        {/* Content Wrapper (centered, max width) */}
-        <div className="relative z-10 w-full pb-8 md:pb-12">
+        {/* Content Wrapper */}
+        <div className="relative z-10 w-full pb-18 md:pb-12">
           <div className="max-w-[1550px] mx-auto px-6">
-            {/* Hero Text */}
             <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 md:gap-12 mb-8 md:mb-16">
-              {/* Left Side: Animated Heading */}
               <div className="flex-1 text-start">
                 <p className="text-[#FF5F00] text-sm md:text-xl font-bold mb-2 uppercase tracking-widest">
                   Hey, I'm a
@@ -106,8 +109,7 @@ const Hero = () => {
                               exit: {
                                 opacity: 0,
                                 transition: {
-                                  delay:
-                                    (phrases[index].length - charIndex) * 0.12,
+                                  delay: (phrases[index].length - charIndex) * 0.12,
                                 },
                               },
                             }}
@@ -121,14 +123,12 @@ const Hero = () => {
                 </h1>
               </div>
 
-              {/* Right Side: Subheading */}
               <div className="flex-1 max-w-sm text-start">
                 <h2 className="text-white font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl leading-tight mb-4">
                   Great design should feel invisible.
                 </h2>
                 <p className="text-white/50 text-base md:text-sm lg:text-lg leading-relaxed">
-                  From logo to language, I build brands that connect and
-                  convert.
+                  From logo to language, I build brands that connect and convert.
                 </p>
               </div>
             </div>
@@ -159,7 +159,6 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* Brands Component */}
       <Brands />
     </div>
   );
