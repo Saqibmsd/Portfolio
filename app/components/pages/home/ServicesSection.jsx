@@ -20,8 +20,8 @@ const ServicesSection = () => {
   });
 
   // Parallax movement for side cards on desktop
-  const moveLeft = useTransform(scrollYProgress, [0.1, 0.4], [150, 0]);
-  const moveRight = useTransform(scrollYProgress, [0.1, 0.4], [-150, 0]);
+  const moveLeft = useTransform(scrollYProgress, [0.1, 0.5], [300, 0]);
+  const moveRight = useTransform(scrollYProgress, [0.1, 0.5], [-300, 0]);
 
   const services = [
     {

@@ -3,8 +3,8 @@ import { FaLinkedinIn, FaInstagram, FaTwitter, FaFacebookF, FaTiktok } from 'rea
 
 const Footer = () => {
   return (
-    /* CHANGE: Standardized padding (py-12 md:py-20) and added px-6 for mobile safety */
-    <footer className="bg-[#141414] text-white py-12 md:py-20 w-full border-t border-white/5 px-6">
+    /* CHANGE: Standardized padding (py-12 md:py-20) and added px-1 md:px-6 for mobile safety */
+    <footer className="bg-[#141414] text-white py-12 md:py-20 w-full border-t border-white/5 px-1 md:px-6">
       
       {/* CHANGE: Added grid-cols-1 for mobile, md:grid-cols-2 for tablets, and lg:grid-cols-4 for desktop */}
       {/* CHANGE: text-center for mobile, md:text-left for larger screens */}

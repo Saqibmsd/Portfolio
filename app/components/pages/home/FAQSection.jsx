@@ -69,7 +69,7 @@ const HeaderButton = () => {
 };
 
 const FAQSection = () => {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = [
     {
@@ -101,11 +101,16 @@ const FAQSection = () => {
 
   return (
     /* CHANGE: Adjusted responsive padding (py-16 md:py-24), margins (-mt-24 md:-mt-32), and rounding (rounded-b-[40px] md:rounded-b-[80px]) */
-    <section className="bg-[#141414] text-white py-16 md:py-24 relative w-full overflow-hidden -mt-24 md:-mt-32 pt-32 md:pt-48 z-20 rounded-b-[40px] md:rounded-b-[80px] px-6">
+    <section className="bg-[#141414] text-white py-16 md:py-24 relative w-full overflow-hidden -mt-24 md:-mt-32 pt-32 md:pt-48 z-20 rounded-b-[40px] md:rounded-b-[80px] px-1 md:px-6">
       <div className="max-w-[1450px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-        
         {/* Left Side Header */}
-        <div className="lg:col-span-5">
+        <motion.div
+          initial={{ x: -80, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="lg:col-span-5"
+        >
           <p className="text-[#ff5c00] font-bold uppercase tracking-widest text-xs mb-4">
             Frequently Asked Questions
           </p>
@@ -115,7 +120,7 @@ const FAQSection = () => {
           </h2>
 
           <HeaderButton />
-        </div>
+        </motion.div>
 
         {/* Right Side Accordion */}
         <div className="lg:col-span-7 space-y-3 md:space-y-4">
@@ -123,10 +128,14 @@ const FAQSection = () => {
             const isOpen = openIndex === index;
 
             return (
-              <div
+              <motion.div
+                initial={{ y: 40, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true }}
                 key={index}
                 /* CHANGE: Adjusted rounding for mobile (rounded-2xl md:rounded-3xl) */
-                className={`rounded-2xl md:rounded-[2.5rem] transition-all duration-500 border-2 ${
+                className={`rounded-xl md:rounded-[2.r5em] transition-all duration-500 border-2 ${
                   isOpen
                     ? "bg-[#111111] border-[#ff5c00]"
                     : "bg-[#0f0f0f] border-transparent hover:border-white/10"
@@ -163,7 +172,7 @@ const FAQSection = () => {
                     {faq.answer}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

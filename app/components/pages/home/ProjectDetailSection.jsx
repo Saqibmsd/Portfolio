@@ -64,7 +64,7 @@ const ProjectDetailSection = () => {
   return (
     <section
       ref={containerRef}
-      className="bg-[#0a0a0a] text-white py-12 md:py-20 px-6"
+      className="bg-[#0a0a0a] text-white py-12 md:py-20 px-auto md:px-6"
     >
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden pointer-events-none z-0">
         <motion.div

@@ -81,7 +81,7 @@ const Hero = () => {
 
         {/* Content Wrapper */}
         <div className="relative z-10 w-full pb-18 md:pb-12">
-          <div className="max-w-[1550px] mx-auto px-6">
+          <div className="max-w-[1550px] mx-auto px-1 md:px-6">
             <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 md:gap-12 mb-8 md:mb-16">
               <div className="flex-1 text-start">
                 <p className="text-[#FF5F00] text-sm md:text-xl font-bold mb-2 uppercase tracking-widest">
@@ -135,7 +135,7 @@ const Hero = () => {
 
             {/* Services Grid */}
             <div className="w-full border-t border-white/10 z-10 pt-8 pb-12">
-              <div className="max-w-[1550px] mx-auto px-6">
+              <div className="max-w-[1550px] mx-auto px-1 md:px-6">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 md:gap-x-12 gap-y-8 items-center justify-between">
                   {[
                     { id: "#01", title: "Brand Strategy" },

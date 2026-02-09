@@ -22,8 +22,8 @@ const DesignSection = () => {
     offset: ["start end", "end start"],
   });
 
-  const moveLeft = useTransform(scrollYProgress, [0.1, 0.4], [300, -0]);
-  const moveRight = useTransform(scrollYProgress, [0.1, 0.4], [-300, 0]);
+  const moveLeft = useTransform(scrollYProgress, [0.1, 0.5], [300, -0]);
+  const moveRight = useTransform(scrollYProgress, [0.1, 0.5], [-300, 0]);
 
   const projects = [
     {
@@ -46,7 +46,7 @@ const DesignSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#0a0a0a] text-white px-6 py-12 md:py-20 overflow-hidden"
+      className="bg-[#0a0a0a] text-white px-1 md:px-6 py-12 md:py-20 overflow-hidden"
     >
       {/* --- Top Header --- */}
       <motion.div

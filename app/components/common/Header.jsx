@@ -98,14 +98,14 @@ const Header = () => {
     <header
       className={`w-full ${isScrolled ? "fixed bg-black/60 backdrop-blur-sm shadow-md" : "absolute bg-transparent"} top-0 z-50 overflow-visible transition-all duration-300`}
     >
-      {/* MODIFIED: Increased px-2 to px-6 and max-width for consistency */}
-      <div className="max-w-[1550px] mx-auto flex items-center justify-between h-20 px-6">
+      {/* MODIFIED: Increased px-2 to px-1 md:px-6 and max-width for consistency */}
+      <div className="max-w-[1550px] mx-auto flex items-center justify-between h-20 px-1 md:px-6">
         <div className="flex items-center">
           <Link
             href="/"
             className="text-xl md:text-2xl font-black tracking-tighter text-white uppercase"
           >
-            Portfolio
+            M.Saqib
             <span
               className={`align-top text-[10px] md:text-xs transition-colors duration-300 ${
                 isScrolled ? "text-[#FF5F00]" : "text-white"
@@ -158,7 +158,7 @@ const Header = () => {
           >
             <div className="flex justify-between items-center mb-12">
               <span className="text-white font-black tracking-tighter text-xl">
-                PORTFOLIO
+                M.SAQIB
               </span>
               <button onClick={() => setIsMenuOpen(false)}>
                 <X size={32} className="text-white" />

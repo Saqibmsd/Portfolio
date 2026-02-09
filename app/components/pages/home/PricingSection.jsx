@@ -1,8 +1,32 @@
-import React from "react";
-import { motion } from "framer-motion";
+"use client";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Button from "../../common/Button";
 
 const PricingSection = () => {
+  // 1. Define the container variants (handles the staggering)
+// 1. Define the container variants (handles the staggering)
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, 
+        delayChildren: 0.1, // Optional: delays the start of the first card
+      },
+    },
+  };
+  // 2. Define the item variants (handles the individual card animation)
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
   const plans = [
     {
       name: "Basic Plan",
@@ -44,8 +68,10 @@ const PricingSection = () => {
 
   return (
     /* CHANGE: Added responsive padding (py-16 md:py-24) and responsive rounding (rounded-b-[40px] md:rounded-b-[80px]) */
-    /* CHANGE: Added px-6 to prevent cards from touching screen edges on mobile */
-    <section className="bg-[#0a0a0a] text-white py-16 md:py-24 rounded-b-[40px] md:rounded-b-[80px] relative z-30 w-full px-6">
+    /* CHANGE: Added px-1 md:px-6 to prevent cards from touching screen edges on mobile */
+    <section
+      className="bg-[#0a0a0a] text-white py-16 md:py-24 rounded-b-[40px] md:rounded-b-[80px] relative z-30 w-full px-1 md:px-6"
+    >
       {/* Header */}
       {/* CHANGE: Added mb-12 md:mb-16 for tighter mobile spacing */}
       <div className="text-center mb-12 md:mb-16">
@@ -60,10 +86,17 @@ const PricingSection = () => {
 
       {/* Pricing Grid */}
       {/* CHANGE: Ensured gap-6 on mobile and gap-8 on desktop */}
-      <div className="max-w-[1450px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-2 lg:gap-8">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }} // Animates when 20% of grid is visible
+        className="max-w-[1450px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-2 lg:gap-8"
+      >
         {plans.map((plan, index) => (
-          <div
+          <motion.div
             key={index}
+            variants={itemVariants}
             /* CHANGE: Responsive rounding (rounded-[2rem] md:rounded-[2.5rem]) and padding (p-8 md:p-10) */
             className={`rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-6 lg:p-10 flex flex-col transition-all duration-500 ${
               plan.isPopular
@@ -73,7 +106,9 @@ const PricingSection = () => {
           >
             {/* Plan Info */}
             <div className="mb-4 lg:mb-8">
-              <h3 className="font-semibold text-lg mb-4 md:mb-2 lg:mb-4">{plan.name}</h3>
+              <h3 className="font-semibold text-lg mb-4 md:mb-2 lg:mb-4">
+                {plan.name}
+              </h3>
               <div className="flex items-baseline gap-2 mb-2">
                 {/* CHANGE: Scaled price text slightly for mobile (text-4xl md:text-5xl) */}
                 <span className="text-4xl md:text-1xl lg:text-5xl font-bold">
@@ -103,7 +138,10 @@ const PricingSection = () => {
             {/* CHANGE: Reduced bottom margin on mobile (mb-8 md:mb-12) */}
             <ul className="space-y-4 md:space-y-1 lg:space-y-4 mb-8 md:mb-2 lg:mb-12 flex-grow">
               {plan.features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-3 md:gap-1 lg;gap text-sm">
+                <li
+                  key={i}
+                  className="flex items-center gap-3 md:gap-1 lg;gap text-sm"
+                >
                   <div
                     className={`rounded-full p-1 shrink-0 ${plan.isPopular ? "bg-white text-orange-600" : "bg-orange-600 text-white"}`}
                   >
@@ -128,9 +166,9 @@ const PricingSection = () => {
 
             {/* CTA Button */}
             <Button href="/projects/nova-scene" text="Get Started" />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };
