@@ -77,7 +77,7 @@ const ProjectDetailSection = () => {
         />
       </div>
 
-      <div className="relative z-10 py-12 md:py-20">
+      <div className="relative z-10 py-16 md:py-20">
         <motion.div
           initial={{ y: 80, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -121,7 +121,7 @@ const ProjectDetailSection = () => {
               </div>
 
               <div className="lg:col-span-5 flex flex-col justify-end self-stretch">
-                <div className="w-full h-[2px] bg-orange-600 mb-6 md:mb-8 max-w-[200px] md:max-w-[280px]"></div>
+                <div className="w-full h-[4px] bg-orange-600 mb-6 md:mb-8 max-w-[320px] md:max-w-[280px]"></div>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 tracking-tight">
                   Dream Area
                 </h2>
@@ -137,7 +137,7 @@ const ProjectDetailSection = () => {
           <AnimatedProjectWrapper>
             <div className="max-w-[1450px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center mb-10 md:mb-20">
               <div className="lg:col-span-5 flex flex-col justify-end self-stretch order-last lg:order-first">
-                <div className="w-full h-[2px] bg-orange-600 mb-6 md:mb-8 max-w-[200px] md:max-w-[280px]"></div>
+                <div className="w-full h-[4px] bg-orange-600 mb-6 md:mb-8 max-w-[320px] md:max-w-[280px]"></div>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 tracking-tight">
                   Star Blox
                 </h2>
@@ -177,7 +177,7 @@ const ProjectDetailSection = () => {
               </div>
 
               <div className="lg:col-span-5 flex flex-col justify-end self-stretch">
-                <div className="w-full h-[2px] bg-orange-600 mb-6 md:mb-8 max-w-[200px] md:max-w-[280px]"></div>
+                <div className="w-full h-[4px] bg-orange-600 mb-6 md:mb-8 max-w-[320px] md:max-w-[280px]"></div>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 tracking-tight">
                   Nova Scene
                 </h2>

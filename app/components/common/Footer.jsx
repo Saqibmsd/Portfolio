@@ -14,7 +14,7 @@ const Footer = () => {
         {/* CHANGE: Added items-center md:items-start to handle logo/text alignment */}
         <div className="space-y-6 flex flex-col items-center md:items-start">
           <h2 className="text-2xl font-black tracking-tighter text-white uppercase">
-              Portfolio<span className="text-xs text-[#ff5c00] align-top">®</span>
+              M.Saqib<span className="text-xs text-[#ff5c00] align-top">®</span>
           </h2>
           <div className="space-y-4">
             <p className="text-xl font-medium">Great design should feel invisible.</p>
@@ -25,7 +25,7 @@ const Footer = () => {
           </div>
           {/* CHANGE: Added max-w-xs to copyright for better mobile wrapping */}
           <p className="text-gray-600 text-[10px] md:text-xs pt-4 max-w-xs">
-            © Copyright Portfolio | Design by M.Saqib | Intern in Safecare
+            © Copyright M.Saqib | Design by M.Saqib | Intern in Safecare
           </p>
         </div>
 
