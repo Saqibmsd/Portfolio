@@ -49,8 +49,12 @@ const HeaderButton = ({ onClick }) => {
           transition={{ duration: 0.4 }}
           className="flex flex-col"
         >
-          <span className="font-bold text-sm leading-[20px] text-black block">Get in touch</span>
-          <span className="font-bold text-sm leading-[20px] text-white block">Get in touch</span>
+          <span className="font-bold text-sm leading-[20px] text-black block">
+            Get in touch
+          </span>
+          <span className="font-bold text-sm leading-[20px] text-white block">
+            Get in touch
+          </span>
         </motion.div>
       </div>
     </motion.button>
@@ -71,7 +75,7 @@ const Header = () => {
   useEffect(() => {
     const onScroll = () => {
       setIsScrolled(window.scrollY > 40);
-      
+
       // If we are at the very top, force "home" to be active
       if (window.scrollY < 50) {
         setActiveHash("#home");
@@ -86,7 +90,7 @@ const Header = () => {
     const observerOptions = {
       root: null,
       rootMargin: "-20% 0px -60% 0px", // More sensitive to top-down scrolling
-      threshold: [0, 0.1], 
+      threshold: [0, 0.1],
     };
 
     const observerCallback = (entries) => {
@@ -98,9 +102,19 @@ const Header = () => {
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = ["home", "projects", "services", "process", "pricing", "contact"];
-    
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
+    const sections = [
+      "home",
+      "projects",
+      "services",
+      "process",
+      "pricing",
+      "contact",
+    ];
+
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -140,13 +154,22 @@ const Header = () => {
   return (
     <header
       className={`w-full fixed top-0 z-50 transition-all duration-300 ${
-        isScrolled && !isMenuOpen ? "bg-black/60 backdrop-blur-sm shadow-md" : "bg-transparent"
+        isScrolled && !isMenuOpen
+          ? "bg-black/60 backdrop-blur-sm shadow-md"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-[1550px] mx-auto flex items-center justify-between h-20 px-4 md:px-6">
-        <Link href="/" className="text-xl md:text-2xl font-black tracking-tighter text-white uppercase">
+        <Link
+          href="/"
+          className="text-xl md:text-2xl font-black tracking-tighter text-white uppercase"
+        >
           Portfolio
-          <span className={`align-top text-[10px] md:text-xs ${isScrolled ? "text-[#FF5F00]" : "text-white"}`}>®</span>
+          <span
+            className={`align-top text-[10px] md:text-xs ${isScrolled ? "text-[#FF5F00]" : "text-white"}`}
+          >
+            ®
+          </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -172,7 +195,10 @@ const Header = () => {
           <div className="hidden md:block">
             <HeaderButton onClick={(e) => handleScroll(e, "/#contact")} />
           </div>
-          <button className="md:hidden text-white p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button
+            className="md:hidden text-white p-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -184,24 +210,42 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] md:hidden bg-[#0a0a0a] flex flex-col p-4"
+            className="fixed inset-0 z-[100] md:hidden bg-[#0a0a0a] flex flex-col px-4 py-5"
           >
             <div className="flex justify-between items-center mb-8">
-              <span className="text-white font-black tracking-tighter text-2xl">PORTFOLIO<span className="text-[#FF5F00]">.</span></span>
-              <button onClick={() => setIsMenuOpen(false)} className="bg-white/10 p-2 rounded-full text-white"><X size={24} /></button>
+              <span className="text-white font-black tracking-tighter text-2xl">
+                PORTFOLIO<span
+            className={`align-top text-[10px] md:text-xs ${isScrolled ? "text-[#FF5F00]" : "text-white"}`}
+          >
+            ®
+          </span>
+              </span>
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="bg-white/10 p-2 rounded-full text-white"
+              >
+                <X size={24} />
+              </button>
             </div>
 
-            <nav className="flex flex-col gap-4">
+            <nav className="flex flex-col gap-5">
               {navLinks.map((link, i) => {
                 const linkHash = link.href.replace("/", "");
                 const isActive = activeHash === linkHash;
                 return (
-                  <motion.div key={link.name} initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.1 + i * 0.1 }}>
+                  <motion.div
+                    key={link.name}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.1 + i * 0.1 }}
+                  >
                     <Link
                       href={link.href}
                       onClick={(e) => handleScroll(e, link.href)}
                       className={`text-3xl font-black uppercase transition-all ${
-                        isActive ? "text-[#FF5F00] translate-x-4" : "text-white/40 hover:text-white"
+                        isActive
+                          ? "text-[#FF5F00] translate-x-4"
+                          : "text-white/40 hover:text-white"
                       }`}
                     >
                       {link.name}
@@ -212,7 +256,9 @@ const Header = () => {
             </nav>
 
             <div className="mt-auto border-t border-white/10 pt-10">
-              <p className="text-white/40 text-xs uppercase mb-6 font-bold">Start a project</p>
+              <p className="text-white/40 text-xs uppercase mb-6 font-bold">
+                Start a project
+              </p>
               <div className="w-fit scale-110 origin-left">
                 <HeaderButton onClick={(e) => handleScroll(e, "/#contact")} />
               </div>
