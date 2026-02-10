@@ -67,10 +67,10 @@ const PricingSection = () => {
   ];
 
   return (
-    /* CHANGE: Added responsive padding (py-16 md:py-24) and responsive rounding (rounded-b-[40px] md:rounded-b-[80px]) */
-    /* CHANGE: Added px-1 md:px-6 to prevent cards from touching screen edges on mobile */
+    /* CHANGE: Added px-4 md:px-6 to prevent cards from touching screen edges on mobile */
     <section
-      className="bg-[#0a0a0a] text-white py-16 md:py-24 rounded-b-[40px] md:rounded-b-[80px] relative z-30 w-full px-1 md:px-6"
+    id="pricing"
+      className="bg-[#0a0a0a] text-white py-16 md:py-24 rounded-b-[40px] md:rounded-b-[80px] relative z-30 w-full px-4 md:px-6"
     >
       {/* Header */}
       {/* CHANGE: Added mb-12 md:mb-16 for tighter mobile spacing */}
@@ -165,7 +165,7 @@ const PricingSection = () => {
             </ul>
 
             {/* CTA Button */}
-            <Button href="/projects/nova-scene" text="Get Started" />
+           <Button href="/#pricing" text="Get Started" />
           </motion.div>
         ))}
       </motion.div>

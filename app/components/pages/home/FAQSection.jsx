@@ -101,7 +101,7 @@ const FAQSection = () => {
 
   return (
     /* CHANGE: Adjusted responsive padding (py-16 md:py-24), margins (-mt-24 md:-mt-32), and rounding (rounded-b-[40px] md:rounded-b-[80px]) */
-    <section className="bg-[#141414] text-white py-16 md:py-24 relative w-full overflow-hidden -mt-24 md:-mt-32 pt-32 md:pt-48 z-20 rounded-b-[40px] md:rounded-b-[80px] px-1 md:px-6">
+    <section className="bg-[#141414] text-white py-16 md:py-24 relative w-full overflow-hidden -mt-24 md:-mt-32 pt-32 md:pt-48 z-20 rounded-b-[40px] md:rounded-b-[80px] px-4 md:px-6">
       <div className="max-w-[1450px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
         {/* Left Side Header */}
         <motion.div

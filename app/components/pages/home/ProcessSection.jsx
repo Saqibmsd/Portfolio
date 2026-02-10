@@ -55,7 +55,7 @@ const ProcessSection = () => {
   };
 
   return (
-    <section className="bg-[#1b1a1a] text-white relative z-30 py-16 md:py-24 rounded-b-[40px] md:rounded-b-[80px] px-1 md:px-6">
+    <section id="process" className="bg-[#1b1a1a] text-white relative z-30 py-16 md:py-24 rounded-b-[40px] md:rounded-b-[80px] px-4 md:px-6">
       <motion.div
         initial={{ y: 80, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}

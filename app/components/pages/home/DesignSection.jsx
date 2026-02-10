@@ -46,7 +46,7 @@ const DesignSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#0a0a0a] text-white px-1 md:px-6 py-12 md:py-20 overflow-hidden"
+      className="bg-[#0a0a0a] text-white px-4 md:px-6 py-12 md:py-20 overflow-hidden"
     >
       {/* --- Top Header --- */}
       <motion.div

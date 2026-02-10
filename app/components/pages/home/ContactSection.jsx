@@ -6,7 +6,7 @@ const ContactSection = () => {
   return (
     /* CHANGE: Removed h-screen and fixed h-[500px] to allow content to grow on mobile. Added min-h values instead. */
     /* CHANGE: Adjusted padding and negative margin (-mt-24 md:-mt-32) for better section overlap on mobile. */
-    <section className="bg-[#0a0a0a] text-white relative w-full overflow-hidden -mt-24 md:-mt-32 pt-32 md:pt-48 pb-40 z-10 px-1 md:px-6">
+    <section id="contact" className="bg-[#0a0a0a] text-white relative w-full overflow-hidden -mt-24 md:-mt-32 pt-32 md:pt-48 pb-40 z-10 px-4 md:px-6">
       <div className="max-w-[1450px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         {/* Left Side: Content & Socials */}
         {/* CHANGE: Added text-left consistency and spacing adjustments */}

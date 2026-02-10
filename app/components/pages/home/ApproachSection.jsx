@@ -71,7 +71,7 @@ const ApproachSection = () => {
 
   return (
     /* MODIFIED: Added px-6 and adjusted py for mobile */
-    <section className="bg-[#0a0a0a] text-white py-16 md:py-24 px-1 md:px-6">
+    <section className="bg-[#0a0a0a] text-white py-16 md:py-24 px-4 md:px-6">
       {/* Header Area */}
       <motion.div
         initial={{ y: 80, opacity: 0 }}

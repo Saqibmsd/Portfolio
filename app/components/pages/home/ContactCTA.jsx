@@ -43,7 +43,7 @@ const ContactCTA = () => {
       </div>
 
       {/* Centered Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-1 md:px-6 pt-32">
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 md:px-6 pt-32">
         <motion.p
           initial={{ y: 80, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}

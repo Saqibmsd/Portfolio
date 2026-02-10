@@ -90,7 +90,7 @@ const CoreValues = () => {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="relative z-10 h-full flex flex-col justify-end items-center pb-12 md:pb-20 px-1 md:px-6"
+        className="relative z-10 h-full flex flex-col justify-end items-center pb-12 md:pb-20 px-4 md:px-6"
       >
         {/* Header Text */}
         {/* MODIFIED: items-start for mobile, items-end for desktop */}
