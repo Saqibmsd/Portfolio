@@ -12,7 +12,7 @@ const HeaderButton = ({ onClick }) => {
       whileHover="hover"
       initial="initial"
       onClick={onClick}
-      className="relative group flex items-center gap-3 bg-white text-black p-1 pr-6 rounded-full overflow-hidden shadow-lg"
+      className="relative group flex items-center gap-3 bg-white text-black p-1 pr-6 rounded-full overflow-hidden shadow-lg cursor-pointer"
     >
       <motion.div
         variants={{

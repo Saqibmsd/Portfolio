@@ -81,7 +81,7 @@ const ContactCTA = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <Button href="/contact" text="Get in Touch" />
+          <Button href="/#contact" text="Get in Touch" />
         </motion.div>
       </div>
     </section>

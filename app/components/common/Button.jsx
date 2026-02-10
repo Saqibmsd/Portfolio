@@ -10,7 +10,7 @@ export default function Button({ href = "#", text = "Read more" }) {
       <motion.button
         whileHover="hover"
         initial="initial"
-        className="relative group flex items-center gap-3 bg-[#141414] text-black p-1 pr-6 rounded-full overflow-hidden shadow-lg"
+        className="relative group flex items-center gap-3 bg-[#141414] text-black p-1 pr-6 rounded-full overflow-hidden shadow-lg cursor-pointer"
       >
         {/* Expanding Orange Background */}
         <motion.div
