@@ -58,7 +58,7 @@ const ProjectDetailSection = () => {
   const circleScale = useTransform(scrollYProgress, [0, 0.25], [1, 20]);
   const circleOpacity = useTransform(scrollYProgress, [0.2, 0.3], [1, 0]);
   const circleDisplay = useTransform(scrollYProgress, (pos) =>
-    pos >= 0.3 ? "none" : "flex"
+    pos >= 0.3 ? "none" : "flex",
   );
 
   return (
@@ -127,9 +127,11 @@ const ProjectDetailSection = () => {
                   Dream Area
                 </h2>
                 <p className="text-gray-400 text-base md:text-lg xl:text-2xl leading-relaxed mb-8 md:mb-10 max-w-md">
-                  The image shows flowing shapes in iridescent hues, from deep blues and purples to vibrant pinks and oranges, creating an ethereal effect.
+                  The image shows flowing shapes in iridescent hues, from deep
+                  blues and purples to vibrant pinks and oranges, creating an
+                  ethereal effect.
                 </p>
-                <Button href="/projects/dream-area" text="Read more" />
+                <Button href="dream-area" text="Read more" />
               </div>
             </div>
           </AnimatedProjectWrapper>
@@ -143,9 +145,11 @@ const ProjectDetailSection = () => {
                   Star Blox
                 </h2>
                 <p className="text-gray-400 text-base md:text-lg xl:text-2xl leading-relaxed mb-8 md:mb-10 max-w-md">
-                  The image shows flowing shapes in iridescent hues, from deep blues and purples to vibrant pinks and oranges, creating an ethereal effect.
+                  The image shows flowing shapes in iridescent hues, from deep
+                  blues and purples to vibrant pinks and oranges, creating an
+                  ethereal effect.
                 </p>
-                <Button href="/projects/star-blox" text="Read more" />
+                <Button href="star-blox" text="Read more" />
               </div>
 
               <div className="lg:col-span-7">
@@ -183,9 +187,11 @@ const ProjectDetailSection = () => {
                   Nova Scene
                 </h2>
                 <p className="text-gray-400 text-base md:text-lg xl:text-2xl leading-relaxed mb-8 md:mb-10 max-w-md">
-                  The image shows flowing shapes in iridescent hues, from deep blues and purples to vibrant pinks and oranges, creating an ethereal effect.
+                  The image shows flowing shapes in iridescent hues, from deep
+                  blues and purples to vibrant pinks and oranges, creating an
+                  ethereal effect.
                 </p>
-                <Button href="/projects/nova-scene" text="Read more" />
+                <Button href="nova-scene" text="Read more" />
               </div>
             </div>
           </AnimatedProjectWrapper>

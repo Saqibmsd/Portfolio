@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // UPDATE: Import usePathname
 import { Menu, X, ArrowRight } from "lucide-react";
 import { useCart } from "../../context/CartContext";
 
@@ -66,17 +67,17 @@ const Header = () => {
   const [mounted, setMounted] = useState(false);
   const [activeHash, setActiveHash] = useState("#home");
   const [isScrolled, setIsScrolled] = useState(false);
+  
+  // UPDATE: Get the current path (e.g., "/", "/about", etc.)
+  const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Fix 1: Improved Scroll Listener for Home Section
   useEffect(() => {
     const onScroll = () => {
       setIsScrolled(window.scrollY > 40);
-
-      // If we are at the very top, force "home" to be active
       if (window.scrollY < 50) {
         setActiveHash("#home");
       }
@@ -85,17 +86,15 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Fix 2: Better Observer Settings
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-20% 0px -60% 0px", // More sensitive to top-down scrolling
+      rootMargin: "-20% 0px -60% 0px",
       threshold: [0, 0.1],
     };
 
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
-        // Only update if we aren't at the very top (let the scroll listener handle that)
         if (entry.isIntersecting && window.scrollY >= 50) {
           setActiveHash(`#${entry.target.id}`);
         }
@@ -123,9 +122,13 @@ const Header = () => {
     return () => observer.disconnect();
   }, []);
 
+  // UPDATE: Logic modified to check if we are on the landing page
   const handleScroll = (e, href) => {
-    if (href.startsWith("/#")) {
-      const hash = href.replace("/", ""); // e.g. "#contact"
+    const isLandingPage = pathname === "/";
+
+    if (href.startsWith("/#") && isLandingPage) {
+      // If we are on the landing page and it's a hash link, scroll smoothly
+      const hash = href.replace("/", "");
       const id = hash.replace("#", "");
       const element = document.getElementById(id);
 
@@ -137,6 +140,8 @@ const Header = () => {
         setIsMenuOpen(false);
       }
     } else {
+      // If we are on a different page (like /about), don't prevent default.
+      // The <Link> component will naturally navigate to the home page hash.
       setIsMenuOpen(false);
     }
   };
