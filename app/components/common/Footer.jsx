@@ -25,7 +25,7 @@ const Footer = () => {
           </div>
           {/* CHANGE: Added max-w-xs to copyright for better mobile wrapping */}
           <p className="text-gray-600 text-[10px] md:text-xs pt-4 max-w-xs">
-            © Copyright Portfolio | Design by M.Saqib | Intern in Safecare
+            © Copyright Portfolio | Design by M.Saqib | Intern in SinnexTech
           </p>
         </div>
 
